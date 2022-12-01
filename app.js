@@ -22,7 +22,10 @@ const logger = async (req, res, next) => {
 
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
-        console.log(ip);
+        console.log('x-forword-for');
+        console.log(req.headers['x-forwarded-for']);
+        console.log('remote-address');
+        console.log(req.socket.remoteAddress);
 
         try {
             let data = await fetch(`http://ipwhois.app/json/${ip}?objects=ip,isp,city,country`);
