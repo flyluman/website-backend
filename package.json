@@ -14,5 +14,9 @@
         "helmet": "^6.0.1",
         "mongodb": "^4.12.1",
         "node-fetch": "^3.3.0"
+    },
+    "engines": {
+        "node": "18.x",
+        "npm": "9.x"
     }
 }

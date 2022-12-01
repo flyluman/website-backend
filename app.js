@@ -18,14 +18,9 @@ const logger = async (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
 
     if (process.env.NODE_ENV === 'production') {
-        if (req.headers['x-forwarded-proto'] !== 'https') return res.redirect(`https://luman.herokuapp.com${req.path}`);
+        if (req.headers['x-forwarded-proto'] !== 'https') return res.redirect(`https://flyluman.onrender.com${req.path}`);
 
-        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-
-        console.log('x-forword-for');
-        console.log(req.headers['x-forwarded-for']);
-        console.log('remote-address');
-        console.log(req.socket.remoteAddress);
+        const ip = req.headers['x-forwarded-for'].split(',')[0];
 
         try {
             let data = await fetch(`http://ipwhois.app/json/${ip}?objects=ip,isp,city,country`);
